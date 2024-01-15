@@ -2,15 +2,15 @@
 import { usePathname, useRouter } from "next/navigation";
 
 type Props = {
-  slug: string;
+  slug?: string;
 };
 
-const AboutUsComponent = ({ slug }: { slug?: string }) => {
+const AboutUsComponent = ({ slug }: Props) => {
   const router = useRouter();
   const pathname  = usePathname();
 
   const handleToggle = () => {
-    if (pathname.includes(slug)) {
+    if (pathname.includes(slug ?? "")) {
       router.push("/aboutus");
     } else {
       router.push(`/aboutus/xyz`);
